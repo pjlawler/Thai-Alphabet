@@ -10,7 +10,7 @@ import UIKit
 
 class LearnLettersAdvancedVC: UIViewController {
     
-    let timerLabel          = TimerLabel()
+    let cardsRemaining      = TimerLabel()
     let buttonStack         = CustomStack(stackAxis: .horizontal, alignment: .fill, distribution: .fill, padding: 15)
     let scoreStack          = CustomStack(stackAxis: .horizontal, alignment: .fill, distribution: .fill, padding: 20)
     let sayAgainButton      = ActionButton(title: "Say Again")
@@ -53,7 +53,7 @@ class LearnLettersAdvancedVC: UIViewController {
         let scoreStack      = CustomStack(stackAxis: .horizontal, alignment: .fill, distribution: .fill, padding: 20)
         
         view.addSubviews(views: scoreStack, correctTitle, timerTitle, wrongTitle)
-        scoreStack.addArrangedSubview(timerLabel)
+        scoreStack.addArrangedSubview(cardsRemaining)
         
         timerTitle.text     = "Cards Remaining"
         
@@ -61,7 +61,7 @@ class LearnLettersAdvancedVC: UIViewController {
             scoreStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             scoreStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             timerTitle.bottomAnchor.constraint(equalTo: scoreStack.topAnchor),
-            timerTitle.centerXAnchor.constraint(equalTo: timerLabel.centerXAnchor)
+            timerTitle.centerXAnchor.constraint(equalTo: cardsRemaining.centerXAnchor)
         ])
     }
     
@@ -99,9 +99,9 @@ class LearnLettersAdvancedVC: UIViewController {
     func displayMoreInfoMessage() {
         alert = nil
         alert = UIAlertController(title: "More Options...", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Back to Flashcards", style: .default, handler: { (done) in self.audio.playCardTitle(cardNumber: self.flashCard.letterNumber)}))
         alert.addAction(UIAlertAction(title: "Reset Flashcards", style: .default, handler: { (done) in self.resetDeck()}))
         alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { (done) in self.backToMain()}))
-        alert.addAction(UIAlertAction(title: "Back to Flashcards", style: .default))
         self.present(alert, animated: true)
     }
     
@@ -221,7 +221,7 @@ class LearnLettersAdvancedVC: UIViewController {
     
     
     func displayCard(card: Int) {
-        timerLabel.text = String(cardBank.count)
+        cardsRemaining.text = String(cardBank.count)
         flashCard.setCard(card: card)
         UIView.animate(withDuration: 0.5) {
             self.audio.playCardTitle(cardNumber: card)
@@ -230,6 +230,7 @@ class LearnLettersAdvancedVC: UIViewController {
     
     
     func displayEmptyDeckAlert() {
+        cardsRemaining.text = "Empty"
         alert = UIAlertController(title: "Deck Empty", message: "Congratulations! You've successfully answered all of the flash cards!  Would you like play again or go back to the main menu?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Play Again", style: .default, handler: { (done) in self.resetDeck() }))
         alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { (done) in self.backToMain()}))

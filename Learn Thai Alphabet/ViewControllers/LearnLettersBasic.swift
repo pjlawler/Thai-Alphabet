@@ -102,9 +102,9 @@ class LearnLettersBasic: UIViewController {
     func displayMoreInfoMessage() {
         alert = nil
         alert = UIAlertController(title: "More Options...", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Back to Flashcards", style: .default))
         alert.addAction(UIAlertAction(title: "Reset Flashcards", style: .default, handler: { (done) in self.resetDeck()}))
         alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { (done) in self.backToMain()}))
-        alert.addAction(UIAlertAction(title: "Back to Flashcards", style: .default))
         self.present(alert, animated: true)
     }
     
@@ -160,8 +160,7 @@ class LearnLettersBasic: UIViewController {
         let transformScale: CGFloat = 0.85 + ((1 - 0.85) * (1 - percentageToBorder) )
         
         card.center                 = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
-        
-        card.transform = CGAffineTransform(rotationAngle: transformAngle).scaledBy(x: transformScale, y: transformScale)
+        card.transform              = CGAffineTransform(rotationAngle: transformAngle).scaledBy(x: transformScale, y: transformScale)
         
         showResultMark(swipedRight: isSwipingRight, positionOfViewPrecentage: percentageToBorder)
         
@@ -181,8 +180,8 @@ class LearnLettersBasic: UIViewController {
                 }
             }
             else { UIView.animate(withDuration: 0.3) {
-                card.center = self.view.center
-                card.transform = CGAffineTransform(rotationAngle: 0)
+                card.center     = self.view.center
+                card.transform  = CGAffineTransform(rotationAngle: 0)
                 }
             }
         }
@@ -227,10 +226,32 @@ class LearnLettersBasic: UIViewController {
     
     
     func displayEmptyDeckAlert() {
-        alert = UIAlertController(title: "Deck Empty", message: "Congratulations! You've successfully answered all of the flash cards!  Would you like play again or go back to the main menu?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Play Again", style: .default, handler: { (done) in self.resetDeck() }))
-        alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { (done) in self.backToMain()}))
-        self.present(alert, animated: true)
+
+        cardsRemaining.text = "Empty"
+        flashCard.displayBlankCard()
+        flashCard.alpha = 1
+        let message = "Congratulations! You've successfully answered all of the flash cards!  Would you like play again or go back to the main menu?"
+        
+        let deckEmptyAlert = AlertMsgBoxVC(title: "Deck Empty", message: message, buttonTitles: ["Play Again", "Main Menu"])
+          deckEmptyAlert.delegate = self
+          deckEmptyAlert.modalPresentationStyle = .overFullScreen
+          deckEmptyAlert.modalTransitionStyle = .crossDissolve
+          present(deckEmptyAlert, animated: true)
     }
+}
+
+extension LearnLettersBasic: AlertMsgBoxProtocol {
+    func buttonTapped(alert title: String, buttonTitle: String) {
+        
+        switch title {
+        case "Deck Empty":
+            if buttonTitle == "Play Again" { self.resetDeck() }
+            if buttonTitle == "Main Menu" { self.backToMain() }
+        default:
+            return
+        }
+    }
+    
+    
 }
 

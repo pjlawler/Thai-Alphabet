@@ -66,6 +66,7 @@
 		68616F4A23FE0F5900F45247 /* MoreInfoMsgBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68616F4923FE0F5900F45247 /* MoreInfoMsgBoxVC.swift */; };
 		68616F4C23FE300000F45247 /* LearnLettersBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68616F4B23FE300000F45247 /* LearnLettersBasic.swift */; };
 		68616F4E23FE312000F45247 /* LearnLettersCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68616F4D23FE312000F45247 /* LearnLettersCard.swift */; };
+		68800BEE240213DA00C67848 /* AlertMsgBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68800BED240213DA00C67848 /* AlertMsgBoxVC.swift */; };
 		6884176323F35A8900FE8C49 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6884176223F35A8800FE8C49 /* Constants.swift */; };
 		6884176523F361B800FE8C49 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6884176423F361B800FE8C49 /* Utilities.swift */; };
 		688BEFA123EBB632001299F2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BEFA023EBB632001299F2 /* SoundManager.swift */; };
@@ -144,6 +145,7 @@
 		68616F4923FE0F5900F45247 /* MoreInfoMsgBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoMsgBoxVC.swift; sourceTree = "<group>"; };
 		68616F4B23FE300000F45247 /* LearnLettersBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLettersBasic.swift; sourceTree = "<group>"; };
 		68616F4D23FE312000F45247 /* LearnLettersCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnLettersCard.swift; sourceTree = "<group>"; };
+		68800BED240213DA00C67848 /* AlertMsgBoxVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMsgBoxVC.swift; sourceTree = "<group>"; };
 		6884176223F35A8800FE8C49 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6884176423F361B800FE8C49 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		688BEFA023EBB632001299F2 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				68EEB1EA23F85D5B00E5B4BA /* TestSettingsVC.swift */,
 				68616F4923FE0F5900F45247 /* MoreInfoMsgBoxVC.swift */,
 				68EEB1E823F7531F00E5B4BA /* LearnLettersAdvancedVC.swift */,
+				68800BED240213DA00C67848 /* AlertMsgBoxVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				68616F4C23FE300000F45247 /* LearnLettersBasic.swift in Sources */,
 				688BEFA123EBB632001299F2 /* SoundManager.swift in Sources */,
 				68F3348F23F644440087B7DC /* ScoreboardTitleLabel.swift in Sources */,
+				68800BEE240213DA00C67848 /* AlertMsgBoxVC.swift in Sources */,
 				6884176523F361B800FE8C49 /* Utilities.swift in Sources */,
 				6832D96023FA453F00029EBC /* StackView+Ext.swift in Sources */,
 				68480F1A23F9021100D537F4 /* SecondaryButton.swift in Sources */,

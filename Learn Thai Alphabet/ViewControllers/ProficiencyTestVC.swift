@@ -81,12 +81,15 @@ class ProficiencyTestVC: UIViewController {
         pauseGame()
         alert = nil
         alert = UIAlertController(title: "More Options...", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { (done) in
-                 self.transitionToSettings() }))
-        alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { (done) in self.endGame() }))
+
         alert.addAction(UIAlertAction(title: "Back to game", style: .default, handler: { (done) in
             self.audio.playCardTitle(cardNumber: self.correctLetter)
             self.unpauseGame() }))
+
+        alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { (done) in
+                 self.transitionToSettings() }))
+
+        alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { (done) in self.endGame() }))
         self.present(alert, animated: true)
     }
     
@@ -108,7 +111,6 @@ class ProficiencyTestVC: UIViewController {
     
     
     func updateTimeDisplay() {
-        guard !isPaused else { return }
         let timerDisplay    = currentTimer()
         timerLabel.text     = timeLeft > 0 ? "\(timerDisplay)" : "--:--"
     }
@@ -135,7 +137,6 @@ class ProficiencyTestVC: UIViewController {
         timerLabel.text = "PAUSED"
         timerLabel.showPaused()
         buttonsOff()
-        updateTimeDisplay()
     }
     
     
@@ -268,7 +269,7 @@ class ProficiencyTestVC: UIViewController {
         view.addSubviews(views: pauseButton, buttonStack, settingsButton)
         buttonStack.addArrangedSubviews(views: sayAgainButton, passButton)
 
-        let buttonPadding: CGFloat  = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 10 : 20
+        let buttonPadding: CGFloat  = DeviceTypes.isiPhoneX || DeviceTypes.isiPhoneXsMaxAndXr ? 20 : 10
 
         NSLayoutConstraint.activate([
             buttonStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
@@ -329,12 +330,12 @@ class ProficiencyTestVC: UIViewController {
         view.addSubview(cardGridStack)
         
         NSLayoutConstraint.activate([
-            cardGridStack.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: padding),
-            cardGridStack.trailingAnchor.constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: -padding),
             cardGridStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             cardGridStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            cardGridStack.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: padding),
+            cardGridStack.trailingAnchor.constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: -padding),
             cardGridStack.topAnchor.constraint(greaterThanOrEqualTo: scoreStack.bottomAnchor, constant: padding),
-            cardGridStack.bottomAnchor.constraint(lessThanOrEqualTo: buttonStack.topAnchor, constant: -padding),
+            cardGridStack.bottomAnchor.constraint(greaterThanOrEqualTo: buttonStack.topAnchor, constant: -padding),
         ])
     }
     
@@ -344,7 +345,6 @@ class ProficiencyTestVC: UIViewController {
         let verticalStack           = CustomStack(stackAxis: .vertical, alignment: .fill, distribution: .fillEqually, padding: padding)
         for _ in 1...rows {
             let rowStack = CustomStack(stackAxis: .horizontal, alignment: .fill, distribution: .fillEqually, padding: padding)
-            rowStack.contentMode = .scaleAspectFill
             for _ in 1...columns {
                 let cardTappedGesture = UITapGestureRecognizer(target: self, action: #selector(cardTapped(sender:)))
                 cardTiles[cardIndex].addGestureRecognizer(cardTappedGesture)
@@ -377,4 +377,3 @@ extension ProficiencyTestVC: MoreInfoMsgBoxVCDelegate {
         unpauseGame()
     }
 }
-

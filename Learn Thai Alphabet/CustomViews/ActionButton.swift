@@ -56,7 +56,7 @@ class ActionButton: UIButton {
             
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: width),
-            self.heightAnchor.constraint(equalToConstant: 50)
+            self.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
 }

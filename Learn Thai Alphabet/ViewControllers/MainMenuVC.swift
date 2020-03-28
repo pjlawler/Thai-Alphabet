@@ -10,7 +10,6 @@ import UIKit
 
 class MainMenuVC: UIViewController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -48,9 +47,6 @@ class MainMenuVC: UIViewController {
         let learnBasicButton        = ActionButton(title: "Learn Letters - Basic")
         let learnAdvancedButton     = ActionButton(title: "Learn Letters - Advanced")
         
-        let titleImageView          = UIImageView(image: UIImage(named: "flag"))
-        titleImageView.contentMode  =  .scaleAspectFit
-
         tileGame.addTarget(self, action: #selector(testButtonTapped), for: .touchUpInside)
         learnBasicButton.addTarget(self, action: #selector(learnLettersBasic), for: .touchUpInside)
         learnAdvancedButton.addTarget(self, action: #selector(learnLettersAdvanced), for: .touchUpInside)

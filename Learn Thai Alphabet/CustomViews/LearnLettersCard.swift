@@ -37,6 +37,12 @@ class LearnLettersCard: UIImageView {
         layer.shadowOpacity                         = 1.0
     }
     
+    func displayBlankCard() {
+        letterNumber        = 0
+        backgroundColor     = #colorLiteral(red: 0.9319444299, green: 0.805888474, blue: 0.5628086925, alpha: 1)
+        image               = nil
+    }
+    
     
     func setCard(card: Int) {
         front               = UIImage(named: "thaiLetter\(card)")!

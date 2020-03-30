@@ -42,10 +42,11 @@ class MainMenuVC: UIViewController {
     
     
     func configureMenu() {
-        let menuStack               = CustomStack(stackAxis: .vertical, alignment: .fill, distribution: .fill, padding: 25)
+        let menuStack               = CustomStack(stackAxis: .vertical, alignment: .fill, distribution: .fillEqually, padding: 25)
         let tileGame                = ActionButton(title: "Tile Game")
         let learnBasicButton        = ActionButton(title: "Learn Letters - Basic")
         let learnAdvancedButton     = ActionButton(title: "Learn Letters - Advanced")
+        
         
         tileGame.addTarget(self, action: #selector(testButtonTapped), for: .touchUpInside)
         learnBasicButton.addTarget(self, action: #selector(learnLettersBasic), for: .touchUpInside)
@@ -57,7 +58,8 @@ class MainMenuVC: UIViewController {
         NSLayoutConstraint.activate([
             menuStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             menuStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            menuStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
+            menuStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            menuStack.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
     

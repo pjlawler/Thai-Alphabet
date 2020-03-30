@@ -37,9 +37,26 @@ class LearnLettersAdvancedVC: UIViewController {
         configureScoreboard()
         configureButtons()
         configureCard()
-        
-        displayCard(card: cardBank.randomElement()! )
+
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(false)
+          cardBank.removeAll()
+          let remainingCards  = PersistenceManager.loadAdvancedDeck()
+          cardBank            = remainingCards != nil && remainingCards?.count != 0 ? remainingCards! : Array(1...44)
+          displayCard(card: cardBank.randomElement()!)
+      }
+      
+      override func viewWillDisappear(_ animated: Bool) {
+          super.viewWillDisappear(false)
+          guard PersistenceManager.saveAdvancedDeck(cardBank: cardBank) == nil else {
+              // TODO: Error Handler if unable to save to presets....
+              return
+          }
+      }
+      
     
     func configureBackground() {
         view.backgroundColor = #colorLiteral(red: 0, green: 0.3573735952, blue: 0.4782596231, alpha: 1)

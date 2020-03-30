@@ -12,13 +12,10 @@ class ScoreboardTitleLabel: UILabel {
     
     init() {
         super.init(frame: .zero)
-        
         textColor           = .white
         font                = UIFont.preferredFont(forTextStyle: .callout)
         textAlignment       = .center
-        
         translatesAutoresizingMaskIntoConstraints = false
-        
     }
     
     

@@ -18,7 +18,7 @@ class LearnLettersBasic: UIViewController {
     let resultMark          = UIImageView()
     let checkmarkImage      = UIImage(named: "correctCheck")?.withRenderingMode(.alwaysTemplate)
     let wrongmarkImage      = UIImage(named: "wrongX")?.withRenderingMode(.alwaysTemplate)
-    var cardBank            = Array(1...44)
+    var cardBank: [Int]     = []
     var cardChecked         = false
     var answeredCorrect: Bool?
     var alert: UIAlertController!
@@ -30,8 +30,25 @@ class LearnLettersBasic: UIViewController {
         configureScoreboard()
         configureButtons()
         configureCard()
-        displayCard(card: cardBank.randomElement()! )
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        cardBank.removeAll()
+        let remainingCards  = PersistenceManager.loadBasicDeck()
+        cardBank            = remainingCards != nil && remainingCards?.count != 0 ? remainingCards! : Array(1...44)
+        displayCard(card: cardBank.randomElement()!)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(false)
+        guard PersistenceManager.saveBasicDeck(cardBank: cardBank) == nil else {
+            // TODO: Error Handler if unable to save to presets....
+            return
+        }
+    }
+    
+    
     
     
     func configureBackground() {

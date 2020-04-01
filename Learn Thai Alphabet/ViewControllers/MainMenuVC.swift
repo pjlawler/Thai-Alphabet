@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MainMenuVC: UIViewController {
     
@@ -16,6 +17,9 @@ class MainMenuVC: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         configureBackground()
         configureMenu()
+        let session = AVAudioSession()
+        do { try session.setCategory(.playback) }
+        catch {}
     }
     
     
@@ -35,6 +39,17 @@ class MainMenuVC: UIViewController {
         transitionToAnotherView(to: learnAdvanced)
     }
     
+    @objc func aboutButtonTapped() {
+        let infoAlert = MoreInfoMsgBoxVC(message: .about)
+        infoAlert.modalPresentationStyle    = .overFullScreen
+        infoAlert.modalTransitionStyle      = .crossDissolve
+        infoAlert.titleLabel.text           = "About"
+        infoAlert.messageLabel.textAlignment    = .center
+        
+        
+        present(infoAlert, animated: true)
+    }
+    
     
     func transitionToAnotherView(to view: UIViewController) {
         self.navigationController?.pushViewController(view, animated: false)
@@ -46,20 +61,23 @@ class MainMenuVC: UIViewController {
         let tileGame                = ActionButton(title: "Tile Game")
         let learnBasicButton        = ActionButton(title: "Learn Letters - Basic")
         let learnAdvancedButton     = ActionButton(title: "Learn Letters - Advanced")
+        let aboutButton             = ActionButton(title: "About")
         
         
         tileGame.addTarget(self, action: #selector(testButtonTapped), for: .touchUpInside)
         learnBasicButton.addTarget(self, action: #selector(learnLettersBasic), for: .touchUpInside)
         learnAdvancedButton.addTarget(self, action: #selector(learnLettersAdvanced), for: .touchUpInside)
+        aboutButton.addTarget(self, action: #selector(aboutButtonTapped), for: .touchUpInside)
         
-        menuStack.addArrangedSubviews(views: learnBasicButton, learnAdvancedButton, tileGame)
+        
+        menuStack.addArrangedSubviews(views: learnBasicButton, learnAdvancedButton, tileGame, aboutButton)
         view.addSubview(menuStack)
         
         NSLayoutConstraint.activate([
             menuStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             menuStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             menuStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-            menuStack.heightAnchor.constraint(equalToConstant: 250)
+            menuStack.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     

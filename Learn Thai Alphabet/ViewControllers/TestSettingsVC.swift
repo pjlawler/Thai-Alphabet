@@ -21,7 +21,7 @@ class TestSettingsVC: UIViewController {
     let timerBox            = UIView()
     let timerLabel          = UILabel()
 
-    var layouts: [String]   = ["2 X 1", "2 X 2", "3 X 3", "4 X 4", "5 X 4", "5 X 5", "6 X 5", "6 X 6", "7 X 6"]
+    var layouts: [String]   = ["2 X 2", "3 X 3", "4 X 4", "5 X 4", "5 X 5", "6 X 5", "6 X 6", "7 X 6"]
     let minutes             = Array(0...5)
     let seconds: [Int]      = Array(0...59)
     

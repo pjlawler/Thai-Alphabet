@@ -12,6 +12,7 @@ enum InfoMessage {
     case tileGame
     case learnLettersBasic
     case learnLettersAdvanced
+    case about
 }
 
 
@@ -38,7 +39,7 @@ class MoreInfoMsgBoxVC: UIViewController {
         self.message = message
     }
     
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -90,7 +91,7 @@ class MoreInfoMsgBoxVC: UIViewController {
     func configureTitleView() {
         containerView.addSubview(titleLabel)
         
-        titleLabel.text         = "Instructions"
+        titleLabel.text         = message != .about ? "Instructions" : "About"
         titleLabel.font         = UIFont.boldSystemFont(ofSize: 22)
         titleLabel.textColor    = .white
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -125,7 +126,7 @@ class MoreInfoMsgBoxVC: UIViewController {
         messageLabel.adjustsFontSizeToFitWidth  = true
         messageLabel.textColor                  = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         messageLabel.lineBreakMode              = .byWordWrapping
-        messageLabel.textAlignment              = .justified
+        messageLabel.textAlignment              = message != .about ? .justified : .center
 
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.sizeToFit()
@@ -183,7 +184,12 @@ extension  MoreInfoMsgBoxVC {
             
             The deck of flashcards can be reset with the by tapping the more options menu."
             """
-            
+        case .about:
+            return """
+            Learn Thai - Alphabet
+            ⓒ 2020 Lawler Innovations, Inc.
+            All rights reserved.
+            """
         default:
             return ""
         }

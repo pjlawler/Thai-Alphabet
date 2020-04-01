@@ -71,6 +71,7 @@
 		6884176323F35A8900FE8C49 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6884176223F35A8800FE8C49 /* Constants.swift */; };
 		6884176523F361B800FE8C49 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6884176423F361B800FE8C49 /* Utilities.swift */; };
 		688BEFA123EBB632001299F2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BEFA023EBB632001299F2 /* SoundManager.swift */; };
+		6899C4EB2433DBCD00F78B45 /* BackgroundTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6899C4EA2433DBCD00F78B45 /* BackgroundTasks.framework */; };
 		68A5AC9023EB1DCF0087EF7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A5AC8F23EB1DCF0087EF7C /* AppDelegate.swift */; };
 		68A5AC9223EB1DCF0087EF7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A5AC9123EB1DCF0087EF7C /* SceneDelegate.swift */; };
 		68A5AC9423EB1DCF0087EF7C /* ProficiencyTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A5AC9323EB1DCF0087EF7C /* ProficiencyTestVC.swift */; };
@@ -151,6 +152,7 @@
 		6884176223F35A8800FE8C49 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6884176423F361B800FE8C49 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		688BEFA023EBB632001299F2 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		6899C4EA2433DBCD00F78B45 /* BackgroundTasks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackgroundTasks.framework; path = System/Library/Frameworks/BackgroundTasks.framework; sourceTree = SDKROOT; };
 		68A5AC8C23EB1DCF0087EF7C /* Learn Thai - Alphabet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Learn Thai - Alphabet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68A5AC8F23EB1DCF0087EF7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68A5AC9123EB1DCF0087EF7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6899C4EB2433DBCD00F78B45 /* BackgroundTasks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,11 +238,20 @@
 			path = SFX;
 			sourceTree = "<group>";
 		};
+		6899C4E92433DBCD00F78B45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6899C4EA2433DBCD00F78B45 /* BackgroundTasks.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		68A5AC8323EB1DCF0087EF7C = {
 			isa = PBXGroup;
 			children = (
 				68A5AC8E23EB1DCF0087EF7C /* Learn Thai Alphabet */,
 				68A5AC8D23EB1DCF0087EF7C /* Products */,
+				6899C4E92433DBCD00F78B45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -609,16 +621,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X8629DMYVG;
 				INFOPLIST_FILE = "$(SRCROOT)/Learn Thai Alphabet/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lawlerinnovationsinc.Learn-Thai-Alphabet";
 				PRODUCT_NAME = "Learn Thai - Alphabet";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -627,16 +642,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X8629DMYVG;
 				INFOPLIST_FILE = "$(SRCROOT)/Learn Thai Alphabet/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lawlerinnovationsinc.Learn-Thai-Alphabet";
 				PRODUCT_NAME = "Learn Thai - Alphabet";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

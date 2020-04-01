@@ -19,7 +19,6 @@ enum SFX {
 class SoundManager {
     
     var audioPlayer: AVAudioPlayer?
-    
     func playSoundFX(_ soundFX: SFX) {
         var sound                   = ""
         switch soundFX {
@@ -29,9 +28,12 @@ class SoundManager {
         case .shuffle: sound        = "shuffle"
         }
         
+        
         let bundlePath              = Bundle.main.path(forResource: sound, ofType: "wav")
         let soundURL                = URL(fileURLWithPath: bundlePath!)
         do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+
             audioPlayer             = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
